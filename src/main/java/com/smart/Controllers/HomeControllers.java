@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.smart.DAO.Repository;
+import com.smart.DAO.UserRepository;
 import com.smart.Entities.User;
 import com.smart.Message.Message;
 
@@ -20,9 +20,9 @@ import jakarta.validation.Valid;
 @Controller
 public class HomeControllers {
 	@Autowired
-	Repository repo;
+	UserRepository repo;
 	
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String home(Model m)
 	{
 		m.addAttribute("title", "Home Page");
@@ -36,7 +36,7 @@ public class HomeControllers {
 		return "about";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/signin")
 	public String login(Model m)
 	{
 		m.addAttribute("title", "Login Page");
@@ -51,6 +51,7 @@ public class HomeControllers {
 		 
 		return "signup";
 	}
+	
 	
 	@PostMapping("/register")
 	public String register(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam(value="terms", defaultValue="false") 
@@ -71,6 +72,7 @@ public class HomeControllers {
 		}
 		user.setRole("ROLE_USER");
 		user.setEnabled(true);
+		
 		repo.save(user);
 		model.addAttribute("user",user);
 		System.out.println("agreement " +agreement);

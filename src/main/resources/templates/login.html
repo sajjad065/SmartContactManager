@@ -2,10 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> </title>
 </head>
 <body>
-	<section> This is login page</section>
+	<section> 
+		<h1> This is login page</h1>
+		
 
+	 <div class="sidenav">
+				         <div class="login-main-text">
+				            <h2>Application<br> Login Page</h2>
+				            <p>Login or register from here to access.</p>
+				         </div>
+				      </div>
+				      <div class="main">
+				         <div class="col-md-6 col-sm-12">
+				            <div class="login-form">
+								
+				               <form method="post" th:action="@{/loginprocess}" action="#">
+								<div th:if="${param.error}" class="alert alert-danger"> 
+																	
+									<p> Invalid Username or Password</p>
+									</div>
+									 <div th:if="${param.logout}" class="alert alert-success"> 
+																  									
+									<p> You Have Been Logged Out</p>
+									 </div>
+				                  <div class="form-group">
+				                     <label>User Name</label>
+				                     <input type="text" name="username" class="form-control" placeholder="User Name">
+				                  </div>
+								  
+								  
+				                  <div class="form-group">
+				                     <label>Password</label>
+				                     <input type="password" name="password" class="form-control" placeholder="Password">
+				                  </div>
+								 
+									
+								  </div>
+				                  <button type="submit" class="btn btn-black">Login</button>
+				                  <button type="submit" class="btn btn-secondary">Register</button>
+				               </form>
+				            </div>
+				         </div>
+				      </div>
+	
+		
+		
+	</section>
+
+	
 </body>
 </html>
