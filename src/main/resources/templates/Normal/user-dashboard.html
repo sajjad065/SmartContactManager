@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="Normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section> This is  User dashboard
+		
+		email <p th:text="${user.email}"></p>
+		name <p th:text="${user.name}"></p>
+		
+	</section>
+
+</body>
+</html>

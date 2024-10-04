@@ -14,9 +14,9 @@
 		
 	  }
 	  
+/* CSS for Login Page */
 	  
-	  
-	  #login-name{
+ #login-name{
 font-size: 65px;
 font-family: arabic typesetting;
 border-bottom-style: ridge;
@@ -111,5 +111,57 @@ color: white;
 .btn-black{
     background-color: #000 !important;
     color: #fff;
+}
+
+/* end of login page's CSS */
+
+
+/* for Side bar /Normal/base.html*/
+
+.sidebar {
+	width:20%;
+	background:white;
+	height: 100vh;
+	position:fixed;
+	padding-top:15px;
+	float:left;
+	padding-top:7%;
+	
+	
+}
+.sidebar a{
+	display:block;
+	width:100%;
+	padding:10px 25px;
+	text-decoration:none;
+	color:grey;
+	
+	}
+	.sidebar a:hover{
+		
+		background:#33cc33;
+	}
+	
+	.sidebar .divider{
+		
+		height:.5px;
+		width:100%;
+		background:lightslategrey;
+	}
+	
+	
+.content {
+	
+	margin-left:20%;
+	padding-left:10%;
+	padding-top:8%;
+	width:80%;
+	height: 100vh;
+	background:#94AA99 ;
+	
+	
+	
+	
+	
 }
 

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="Normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section> 
+		
+		
+		<form>
+			<div class="text-center mb-4">
+			    <h2>Add New Contact</h2>
+			  </div>
+		<div class="form-group row">
+		    <label for="Full-Name" class="col-sm-2 col-form-label col-form-label-lg">Full Name</label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control form-control-lg" id="Full-Name" placeholder="Full Name">
+		    </div>
+		  </div>
+		  
+		  
+		  <div class="form-group row">
+		  		    <label for="Nick-Name" class="col-sm-2 col-form-label col-form-label-lg">NickName</label>
+		  		    <div class="col-sm-7">
+		  		      <input type="text" class="form-control form-control-lg" id="Nick-Name" placeholder="Nickname">
+		  		    </div>
+		  		  </div>
+		  
+		  
+				  <div class="form-group row">
+				  		    <label for="Email" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+				  		    <div class="col-sm-7">
+				  		      <input type="email" class="form-control form-control-lg" id="Email" placeholder="Email">
+				  		    </div>
+				  		  </div>
+						  
+						  <div class="form-group row">
+						  	  		    <label for="Phone-Number" class="col-sm-2 col-form-label col-form-label-lg">Phone Number</label>
+						  	  		    <div class="col-sm-7">
+						  	  		      <input type="text" class="form-control form-control-lg" id="Phone-Number" placeholder="Phone Number">
+						  	  		    </div>
+						  	  		  </div>
+									  
+									  <div class="form-group row">
+										<label for="Description"  class="col-sm-2 col-form-label col-form-label-lg">Description</label>
+										<div class="col-sm-7">
+										    <textarea class="form-control" id="Description" rows="3" placeholder="Contact Details"></textarea>
+									  	</div>
+										</div>
+						  	  
+										<div class="form-group row">
+										    <label for="Image" class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+											<div class="col-sm-7 d-flex align-items-center"> 
+										    <input type="file" class="form-control-file"  id="Image">
+										  </div>
+										  </div>
+										  
+										  
+										  
+										  
+										  
+										  
+										  
+										  
+										  
+										  
+										  
+										  <button type="submit" class="btn btn-primary">Submit</button>
+				  
+		</form>
+	</section>
+
+</body>
+</html>
