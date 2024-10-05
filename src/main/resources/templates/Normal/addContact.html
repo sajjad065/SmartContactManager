@@ -6,67 +6,115 @@
 </head>
 <body>
 	<section> 
-		
-		
-		<form>
-			<div class="text-center mb-4">
+  
+<!-- form for adding a new contact -->	
+	
+		<form method="post" th:action="@{/user/process}" th:object="${contact}" enctype="multipart/form-data">
+		<!--	<div class="text-center mb-4">
 			    <h2>Add New Contact</h2>
-			  </div>
+			  </div> -->
+			 <div th:if="${SucessMessage}!=null"
+			  class="alert"
+			th:classappend="${SucessMessage.type}"> 
+				<p th:text="${SucessMessage.content}"> </p>
+								
+				
+				
+			  </div> 
+			  
+			  <!-- Full Name text field-->	
 		<div class="form-group row">
 		    <label for="Full-Name" class="col-sm-2 col-form-label col-form-label-lg">Full Name</label>
 		    <div class="col-sm-7">
-		      <input type="text" class="form-control form-control-lg" id="Full-Name" placeholder="Full Name">
-		    </div>
+		      <input type="text" class="form-control form-control-lg"  th:classappend="${#fields.hasErrors('name')?'is-invalid':''}" id="Full-Name" name="name" placeholder="Full Name">
+			  
+			   <div class="invalid-feedback" th:each="e: ${#fields.errors('name')}" th:text="${e}">
+				 </div> 
+			   </div>
+		   
 		  </div>
 		  
-		  
+		  <!-- Nick Name text field-->	
 		  <div class="form-group row">
 		  		    <label for="Nick-Name" class="col-sm-2 col-form-label col-form-label-lg">NickName</label>
 		  		    <div class="col-sm-7">
-		  		      <input type="text" class="form-control form-control-lg" id="Nick-Name" placeholder="Nickname">
-		  		    </div>
+		  		      <input type="text" class="form-control form-control-lg" th:classappend="${#fields.hasErrors('nickname')?'is-invalid':''}" name="nickname" id="Nick-Name" placeholder="Nickname">
+					 
+					   <div class="invalid-feedback" th:each="e:${#fields.errors('nickname')}" th:text="${e}">
+					
+					
+				
+						</div>
+				   </div>
 		  		  </div>
 		  
-		  
+				  <!-- Email text field-->	
+				  
 				  <div class="form-group row">
 				  		    <label for="Email" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
 				  		    <div class="col-sm-7">
-				  		      <input type="email" class="form-control form-control-lg" id="Email" placeholder="Email">
-				  		    </div>
+				  		      <input type="email" class="form-control form-control-lg" th:classappend="${#fields.hasErrors('email')?'is-invalid':''}" id="Email" name="email" placeholder="Email">
+							 
+							   <div class="invalid-feedback" th:each="e:${#fields.errors('email')}" th:text="${e}">
+								
+								</div>
+							
+						  </div>
 				  		  </div>
 						  
+						  <!-- Phone Number field-->	
 						  <div class="form-group row">
 						  	  		    <label for="Phone-Number" class="col-sm-2 col-form-label col-form-label-lg">Phone Number</label>
 						  	  		    <div class="col-sm-7">
-						  	  		      <input type="text" class="form-control form-control-lg" id="Phone-Number" placeholder="Phone Number">
-						  	  		    </div>
-						  	  		  </div>
+						  	  		      <input type="text" class="form-control form-control-lg" th:classappend="${#fields.hasErrors('phone')?'is-invalid':''}"    name="phone" id="Phone-Number" placeholder="Phone Number">
+										  
+										   <div class="invalid-feedback" th:each="e:${#fields.errors('phone')}" th:text="${e}">
+										</div>
+									   </div>
+									   </div>	  
+									   
+										
+									   <!-- Work text field-->	
+						  	  		 
+									  <div class="form-group row">
+									    <label for="work" class="col-sm-2 col-form-label col-form-label-lg">Work</label>
+									    <div class="col-sm-7">
+									  	 <input type="text" class="form-control form-control-lg"  th:classappend="${#fields.hasErrors('work')?'is-invalid':''}" name="work" id="work" placeholder="Work">
+										 
+										 
+										 	<div class="invalid-feedback" th:each="e:${#fields.errors('work')}" th:text="${e}"> 
+											
+												</div>	
+										
+									 </div>
+									   </div>
 									  
+									   <!-- Text area for description field-->	
+									   
 									  <div class="form-group row">
 										<label for="Description"  class="col-sm-2 col-form-label col-form-label-lg">Description</label>
 										<div class="col-sm-7">
-										    <textarea class="form-control" id="Description" rows="3" placeholder="Contact Details"></textarea>
-									  	</div>
+										    <textarea class="form-control" th:classappend="${#fields.hasErrors('description')?'is-invalid':''}" id="Description" name="description" rows="3" placeholder="Contact Details"></textarea>
+											
+											<div class="invalid-feedback" th:each="e:${#fields.errors('description')}" th:text="${e}">
+												</div>
+										</div>
 										</div>
 						  	  
+										<!-- Image uploader field-->	
+										<!-- This input is not binded to Contact object, we are handling it separately -->
 										<div class="form-group row">
 										    <label for="Image" class="col-sm-2 col-form-label col-form-label-lg">Image</label>
 											<div class="col-sm-7 d-flex align-items-center"> 
-										    <input type="file" class="form-control-file"  id="Image">
+												<input type="file" name="fileimage" class="form-control-file" id="Image">
+												       
+												</div>
+																						    
 										  </div>
-										  </div>
+										    
+										  <!-- Button to submit form-->	
 										  
-										  
-										  
-										  
-										  
-										  
-										  
-										  
-										  
-										  
-										  
-										  <button type="submit" class="btn btn-primary">Submit</button>
+										  <button type="submit" class="btn btn-primary">ADD Contact</button>
 				  
 		</form>
 	</section>

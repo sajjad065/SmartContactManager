@@ -53,6 +53,10 @@ public class HomeControllers {
 	}
 	
 	
+	//This handler method handles the Post request.
+	//This method will run when user submit a request for a signup 
+	//Errors are handled as well
+	
 	@PostMapping("/register")
 	public String register(@Valid @ModelAttribute("user") User user, BindingResult result, @RequestParam(value="terms", defaultValue="false") 
 			 boolean agreement,  Model model, HttpSession session)
