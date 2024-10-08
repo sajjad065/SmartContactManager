@@ -156,8 +156,9 @@ color: white;
 	padding-left:10%;
 	padding-top:8%;
 	width:80%;
-	height: 150vh;
+	min-height: 100vh;
 	background:#94AA99 ;
+	overflow: auto;
 	
 }
 

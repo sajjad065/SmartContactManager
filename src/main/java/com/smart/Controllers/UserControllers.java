@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.smart.DAO.ContactRepository;
 import com.smart.DAO.UserRepository;
 import com.smart.Entities.Contact;
 import com.smart.Entities.User;
@@ -34,6 +35,8 @@ public class UserControllers {
 	Principal principal;
 	@Autowired
 	UserRepository userRepo;  //injecting UserReposiory by Autowiring
+	@Autowired
+	ContactRepository contactRepo;
 	
 	@Autowired
 	ImageRetrieve imageRetrieve;
@@ -133,10 +136,35 @@ public class UserControllers {
 		
 		model.addAttribute("SucessMessage", new Message("New Contact added successfully","alert-success"));
 		System.out.println(model.getAttribute("SucessMessage")); //displaying message in console for successfull addition of new contact
-		return "/Normal/addContact";
+		return "/Normal/addContact";	
+	}
+	
+	
+	@GetMapping("/viewContacts")
+	public String showContacts(Model model)
+	{
+		String email=principal.getName(); //getting the email of the logged-in user
 		
+		User user=userRepo.findByEmail(email); //fetching the user object of a logged-in User
+		
+		List <Contact> contacts=contactRepo.findByUserId(user.getId());
+		
+			if(contacts!=null)
+			{
+				model.addAttribute("contacts", contacts);
+				
+			}
+			else
+			{
+				System.out.println("error in contact list");
+			}
+		
+		
+		
+		return "/Normal/view-contacts";
 		
 	}
+	
 	
 	
 }

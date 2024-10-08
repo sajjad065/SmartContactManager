@@ -76,7 +76,7 @@ public class HomeControllers {
 		}
 		user.setRole("ROLE_USER");
 		user.setEnabled(true);
-		
+		user.setImageUrl("abc.png");
 		repo.save(user);
 		model.addAttribute("user",user);
 		System.out.println("agreement " +agreement);
