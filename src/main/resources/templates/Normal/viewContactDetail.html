@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="Normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+	<section> 
+	<div class="body-container">
+		<img th:src=" '/Images/'+${contact.image}" alt="picture"> 
+		<h2 th:text="${contact.name}"> </h2>
+	</div>
+	<div id="detail">
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Full Name</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Work</th>
+		      <th scope="col">Description</th>
+			  <th scope="col">Phone</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      
+		      <td th:text="${contact.name}"></td>
+		      <td th:text="${contact.email}"></td>
+		      <td th:text="${contact.work}"></td>
+			  <td th:utext="${contact.description}"></td>   	<!-- this will display the content in regular format not html  -->
+			  <td th:text="${contact.phone}"></td>
+		    </tr>
+		   
+		  </tbody>
+		</table>
+		</div>
+			
+		</section> 
+</body>
+</html>

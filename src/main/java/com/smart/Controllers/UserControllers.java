@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -167,6 +169,17 @@ public class UserControllers {
 		
 	}
 	
+	
+	@GetMapping("/viewContactDetail/{cid}")
+	public String viewContactDetail(@PathVariable("cid")int cid, Model model)
+	{
+		String email=principal.getName(); //getting email of logged-in user
+		Optional<Contact> contacts=contactRepo.findById(cid); //getting user object
+		Contact contact=contacts.get();
+		model.addAttribute("contact", contact);
+		System.out.println(contact);
+		return "/Normal/viewContactDetail";
+	}
 	
 	
 }
