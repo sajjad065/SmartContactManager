@@ -1,16 +1,20 @@
 package com.smart.Controllers;
 
 import java.io.IOException;
+
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -139,27 +143,25 @@ public class UserControllers {
 		return "/Normal/addContact";	
 	}
 	
-	
-	@GetMapping("/viewContacts")
-	public String showContacts(Model model)
+	//This handler method displays the list of contacts that user has
+	//Pagination is applied  in order to protect ui from loading huge number of data in a page.so there will be limited number of contacts per page.
+	//currentPage number is passed as a pathvariable, page number starts from 0 
+	@GetMapping("/viewContacts/{currentPage}")
+	public String showContacts(Model model, @PathVariable("currentPage") int currentPage)
 	{
 		String email=principal.getName(); //getting the email of the logged-in user
 		
 		User user=userRepo.findByEmail(email); //fetching the user object of a logged-in User
+		Pageable pageable=PageRequest.of(currentPage, 2); //creating instance of PageRequest by providing current page number and number of data to show per page
+														 //here total number of contact to show per page is 2,
 		
-		List <Contact> contacts=contactRepo.findByUserId(user.getId());
+		Page<Contact> contacts=contactRepo.findByUserId(user.getId(),pageable); //this will return the list of contacts with 2 contacts per page
 		
-			if(contacts!=null)
-			{
-				model.addAttribute("contacts", contacts);
-				
-			}
-			else
-			{
-				System.out.println("error in contact list");
-			}
+			model.addAttribute("contacts", contacts); //adding total contact per page to model object. Here, contacts=total contacts per page
 		
-		
+		   model.addAttribute("currentPage", currentPage); //current page number is added to the model object to display in view
+		   model.addAttribute("totalPages", contacts.getTotalPages()); //getTotalPages() provide total pages which is added to the model object to display in view
+		  
 		
 		return "/Normal/view-contacts";
 		

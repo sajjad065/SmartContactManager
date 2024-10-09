@@ -38,7 +38,23 @@
 			  </tbody>
 			</table>
 			
+			<!-- pagination starts here  -->
 			
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+				
+				<!-- show "Previous option" only if user is not in 1st page -->
+			    <li class="page-item" th:if="${currentPage!=0}"><a class="page-link" th:href="@{'/user/viewContacts/'+${currentPage-1}}">Previous</a></li>
+				
+				<!-- highlighting the current page number and displaying page number based on total number of page -->
+			    <li  th:classappend="${currentPage==(i-1)?'active':''} "  th:each="i: ${#numbers.sequence(1,totalPages)}" class="page-item"> <a th:text="${i}" class="page-link" th:href="@{'/user/viewContacts/'+${i-1}}"> </a></li>
+			    
+				<!-- show "Nex option" only if user is not in last  page -->
+			    <li class="page-item" th:if="${currentPage!=(totalPages-1)}"><a class="page-link" th:href="@{'/user/viewContacts/'+${currentPage+1}}">Next</a></li>
+			  </ul>
+			</nav>
+		
+			<!-- pagination starts here  -->	
 </section>
 </body>
 </html>
