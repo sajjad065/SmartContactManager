@@ -171,17 +171,40 @@ public class UserControllers {
 		
 	}
 	
-	
+	//This handler will show the detail of the contact
+	// User can view individual contact in detail (like work, description , image, nickname)
 	@GetMapping("/viewContactDetail/{cid}")
 	public String viewContactDetail(@PathVariable("cid")int cid, Model model)
 	{
 		String email=principal.getName(); //getting email of logged-in user
-		Optional<Contact> contacts=contactRepo.findById(cid); //getting user object
+		User user=userRepo.findByEmail(email); //getting user object 
+		Optional<Contact> contacts=contactRepo.findById(cid); //getting contact object
 		Contact contact=contacts.get();
-		model.addAttribute("contact", contact);
-		System.out.println(contact);
+		
+		
+		//given url is /user/viewContactDetail/{cid}, so there is possible of manupulating the url by hackers and get access to the unauthorized contact
+		//this check whether contact belongs to the logged in user or not
+		if((contact.getUser()).getId()==user.getId())
+		{
+			model.addAttribute("contact", contact); //adding contact to the  model attribute
+		}
 		return "/Normal/viewContactDetail";
 	}
+	
+	
+	
+	@GetMapping("/yourProfile")
+	public String getProfile(Model model)
+	{
+		
+		
+		String email=principal.getName();
+		User user=userRepo.findByEmail(email);
+		model.addAttribute("user", user);
+		return "/Normal/yourProfile";
+	}
+	
+	
 	
 	
 }

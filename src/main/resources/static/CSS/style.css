@@ -182,3 +182,97 @@ color: white;
 }
 
 /* End of   css for viewContactDetail page    */
+
+
+
+
+
+
+
+
+/* Styling for the dashborad content */
+
+
+/* Header styling */
+.content-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: mediumpurple;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Body content styling */
+.content-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.content-body img {
+    width: 80%;
+    height: 40%;
+    margin-right:20px;
+    border-radius: 10px;
+}
+
+.content-description {
+    max-width: 600px;
+    text-align: center; 
+    margin-top: 20px; 
+    font-size: 25px; 
+    color: #666; 
+    
+    
+}
+.add-button button {
+    padding: 10px 20px; 
+    font-size: 30px;
+    text-align:center; 
+    color: #fff; 
+    background-color: #007bff; 
+    border: none;
+    width: 250px;
+    white-space: nowrap;
+}
+.add-button {
+    text-align: center; 
+    margin-top: 30px; 
+}
+
+
+
+/* End of Styling for the dashborad content */
+
+
+
+/* CSS for Search Field */
+        .search-container {
+            margin: 20px 0; 
+            text-align: center; 
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px; 
+            font-size: 16px; 
+            width: 300px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            margin-right: 10px;        }
+
+        .search-container button {
+            padding: 10px 15px;
+            font-size: 16px; 
+            color: #fff; 
+            background-color: #007bff; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* End of CSS for Search Field */

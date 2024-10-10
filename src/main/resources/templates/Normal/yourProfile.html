@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="Normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+	<section> 
+		
+	<div class="body-container">
+		<img th:src=" '/Images/'+${user.imageUrl}" alt="picture"> 
+		<h2 th:text="${user.name}"> </h2>
+	</div>
+	<div id="detail">
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Full Name</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Role</th>
+		      <th scope="col">Description</th>
+			  
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      
+		      <td th:text="${user.name}"></td>
+		      <td th:text="${user.email}"></td>
+		      <td th:text="${user.role}"></td>
+			  <td th:utext="${user.about}"></td>  
+			  
+		    </tr>
+		   
+		  </tbody>
+		</table>
+		</div>
+		
+			
+		
+		</section> 
+</body>
+</html>

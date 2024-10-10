@@ -27,12 +27,7 @@
 			<div class="text-center mb-4">
 			    <h2>Update Contact</h2>
 			  </div> 
-			  
-			 <div th:if="${updateMessage}!=null"
-			  class="alert"
-			th:classappend="${updateMessage.type}"> 
-				<p th:text="${updateMessage.content}"> </p>	
-			  </div> 
+			 
 			  
 			  <!-- hidden field created in order to update contact based on id -->
 			  <div> <input type="hidden"  th:field="*{cid}"></div>

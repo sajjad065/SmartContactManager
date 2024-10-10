@@ -5,11 +5,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section> This is  User dashboard
+	<section> 
+		<div class="content-header"> 
 		
-		email <p th:text="${user.email}"></p>
-		name <p th:text="${user.name}"></p>
+		<h1>  Welcome <span th:text="${user.name}"> </span> </h1>
+		</div>
 		
+		
+		<div class="content-body"> 
+			
+			<img src="/Images/contact-p.png">
+
+			
+			
+		</div>
+		<div class="content-description">
+					     <h2> Starts adding Contacts</h2>   
+					    </div>
+						<div class="add-button">
+							<a th:href="@{/user/addContact}">
+						<button type="button"> Add New  Contact</button>   </a>
+											    </div>
 	</section>
 
 </body>
