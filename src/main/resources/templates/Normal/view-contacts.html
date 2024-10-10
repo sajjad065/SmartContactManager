@@ -6,21 +6,21 @@
 </head>
 <body>
 	<section> 
-		<!--
-		<h2>Show Contact Page</h2>
-		    -->
-		    <!-- Iterate through the contacts 
-		    <div th:each="contact : ${contacts}">
-		        <h3>List of Contacts</h3>
-		        <p>Phone: <span th:text="${contact.phone}"></span></p>
-		        <p>Name: <span th:text="${contact.name}"></span></p>
-		    </div>
-			-->
+
+				 <div th:if="${updateMessage}!=null"
+				  class="alert"
+				th:classappend="${updateMessage.type}"> 
+					<p th:text="${updateMessage.content}"> </p>	
+				
+				  </div> 
+				  
 			
 			
 			
 			<table class="table">
 			  <thead class="thead-dark">
+				
+						
 			    <tr>
 			      <th scope="col">SN</th>
 			      <th scope="col">Full Name</th>
@@ -35,7 +35,8 @@
 			      <td><a th:href="@{'/user/viewContactDetail/' +${contact.cid}}" style="color:rebeccapurple;"><span th:text="${contact.name}"></span> </a></td>
 			      <td th:text="${contact.phone}"></td>
 				  <td th:text="${contact.email}"></td>
-				  <td><button type="button" class="btn btn-danger">Delete </button> <button type="button" class="btn btn-primary">Update </button</td>
+				  <td><a th:href="@{'/deleteContact/' +${contact.cid}}" class="btn btn-danger">Delete </a> 
+					<form method="post" th:action="@{'/updateForm/' +${contact.cid}}"> <button type="submit" class="btn btn-primary">Update </button>  </form> </td>
 			    </tr>
 			  </tbody>
 			</table>

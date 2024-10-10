@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="Normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+
+
+<body>
+	<section> 
+		
+		<!-- Adding tinymce script to make out text area  as a text editor -->
+		<script src="https://cdn.tiny.cloud/1/iq47ymyyjq6kguo17bul54cvcytn4danmkwr9k7b6x4m8ad3/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+		      tinymce.init({
+		        selector: '#Description',
+				height: 250
+		      });
+		    </script>
+			
+			<!-- end of tinymce script-->	
+  
+<!-- form for adding a new contact -->	
+	
+		<form method="post" th:action="@{/processUpdate}" th:object="${contact}" enctype="multipart/form-data">
+			<div class="text-center mb-4">
+			    <h2>Update Contact</h2>
+			  </div> 
+			  
+			 <div th:if="${updateMessage}!=null"
+			  class="alert"
+			th:classappend="${updateMessage.type}"> 
+				<p th:text="${updateMessage.content}"> </p>	
+			  </div> 
+			  
+			  <!-- hidden field created in order to update contact based on id -->
+			  <div> <input type="hidden"  th:field="*{cid}"></div>
+			  <!-- end of hidden field  -->
+			  
+			  
+			  <!-- Full Name text field-->	
+		<div class="form-group row">
+		    <label for="Full-Name" class="col-sm-2 col-form-label col-form-label-sm">Full Name</label>
+		    <div class="col-sm-7">
+		      <input type="text" th:value="${contact.name}" class="form-control form-control-sm"  th:classappend="${#fields.hasErrors('name')?'is-invalid':''}" id="Full-Name" name="name" placeholder="Full Name">
+			  
+			   <div class="invalid-feedback" th:each="e: ${#fields.errors('name')}" th:text="${e}">
+				 </div> 
+			   </div>
+		   
+		  </div>
+		  
+		  <!-- Nick Name text field-->	
+		  <div class="form-group row">
+		  		    <label for="Nick-Name" class="col-sm-2 col-form-label col-form-label-sm">NickName</label>
+		  		    <div class="col-sm-7">
+		  		      <input type="text" th:value="${contact.nickname}" class="form-control form-control-sm" th:classappend="${#fields.hasErrors('nickname')?'is-invalid':''}" name="nickname" id="Nick-Name" placeholder="Nickname">
+					 
+					   <div class="invalid-feedback" th:each="e:${#fields.errors('nickname')}" th:text="${e}">
+					
+					
+				
+						</div>
+				   </div>
+		  		  </div>
+		  
+				  <!-- Email text field-->	
+				  
+				  <div class="form-group row">
+				  		    <label for="Email" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+				  		    <div class="col-sm-7">
+				  		      <input type="email" th:value="${contact.email}" class="form-control form-control-sm" th:classappend="${#fields.hasErrors('email')?'is-invalid':''}" id="Email" name="email" placeholder="Email">
+							 
+							   <div class="invalid-feedback" th:each="e:${#fields.errors('email')}" th:text="${e}">
+								
+								</div>
+							
+						  </div>
+				  		  </div>
+						  
+						  <!-- Phone Number field-->	
+						  <div class="form-group row">
+						  	  		    <label for="Phone-Number" class="col-sm-2 col-form-label col-form-label-sm">Phone Number</label>
+						  	  		    <div class="col-sm-7">
+						  	  		      <input type="text" th:value="${contact.phone}" class="form-control form-control-sm" th:classappend="${#fields.hasErrors('phone')?'is-invalid':''}"    name="phone" id="Phone-Number" placeholder="Phone Number">
+										  
+										   <div class="invalid-feedback" th:each="e:${#fields.errors('phone')}" th:text="${e}">
+										</div>
+									   </div>
+									   </div>	  
+									   
+										
+									   <!-- Work text field-->	
+						  	  		 
+									  <div class="form-group row">
+									    <label for="work" class="col-sm-2 col-form-label col-form-label-sm">Work</label>
+									    <div class="col-sm-7">
+									  	 <input type="text" th:value="${contact.work}" class="form-control form-control-sm"  th:classappend="${#fields.hasErrors('work')?'is-invalid':''}" name="work" id="work" placeholder="Work">
+										 
+										 
+										 	<div class="invalid-feedback" th:each="e:${#fields.errors('work')}" th:text="${e}"> 
+											
+												</div>	
+										
+									 </div>
+									   </div>
+									  
+									   <!-- Text area for description field-->	
+									   
+									  <div class="form-group row">
+										<label for="Description"  class="col-sm-2 col-form-label col-form-label-sm">Description</label>
+										<div class="col-sm-7">
+										    <textarea rows="2"  th:text="${contact.description}" class="form-control form-control-sm" th:classappend="${#fields.hasErrors('description')?'is-invalid':''}" id="Description" name="description"  placeholder="Contact Details"></textarea>
+											
+											<div class="invalid-feedback" th:each="e:${#fields.errors('description')}" th:text="${e}">
+												</div>
+										</div>
+										</div>
+						  	  
+										<!-- Image uploader field-->	
+										<!-- This input is not binded to Contact object, we are handling it separately -->
+										<div class="form-group row">
+										    <label for="Image" class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+											<div class="col-sm-7 d-flex align-items-center"> 
+												<input type="file" name="fileimage" class="form-control-file" id="Image">
+												       
+												</div>
+																						    
+										  </div>
+										    
+										  <!-- Button to submit form-->	
+										  
+										  <button type="submit" class="btn btn-primary">Update Contact</button>
+										  
+										  
+				  
+		</form>
+	</section>
+
+</body>
+</html>

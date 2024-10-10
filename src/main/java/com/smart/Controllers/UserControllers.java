@@ -82,7 +82,7 @@ public class UserControllers {
 	
 	
 	//mapping 'addContact()' method with the endpoint "/addContact"
-	//This endpoint will take user to a  add a new contact form where user can add a new contact by filling up the contact details
+	//This endpoint will take user to a  "add a new contact form" where user can add a new contact by filling up the contact details
 	@GetMapping("/addContact") 
 	public String addContact(Model model)  
 	{
@@ -126,6 +126,7 @@ public class UserControllers {
 		
 		
 		//if there is no error in the form then below part will be executed
+		
 		String email=principal.getName(); //getting email from Principal object
 		User user=userRepo.findByEmail(email); //fetching user object from logged in user based on email storeImage() method of class ImageRetrieve
 		contact.setUser(user);  //setting user field of contact with user object
@@ -141,6 +142,7 @@ public class UserControllers {
 		System.out.println(contact.toString()); //printing the data of contact object in console for testing
 		
 		model.addAttribute("SucessMessage", new Message("New Contact added successfully","alert-success"));
+		
 		System.out.println(model.getAttribute("SucessMessage")); //displaying message in console for successfull addition of new contact
 		return "/Normal/addContact";	
 	}
