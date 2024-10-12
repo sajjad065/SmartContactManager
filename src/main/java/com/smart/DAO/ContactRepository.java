@@ -21,4 +21,10 @@ public interface ContactRepository extends JpaRepository<Contact,Integer> {
 	
 	@Query(nativeQuery=true, value="SELECT * from SmartContact.contact  WHERE user_id=:user_id;")
 	public Page<Contact> findByUserId( @Param("user_id") int user_id, Pageable pageable);
+	
+	
+	
+	//This method will return the list of contacts that user has based on the input keyword
+	//keyword is anything that user will typed-in in a search bar/field
+	List<Contact> findByNameContainingAndUser(String Keyword, User user);
 }

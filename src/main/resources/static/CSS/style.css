@@ -243,36 +243,29 @@ color: white;
 
 
 
-/* End of Styling for the dashborad content */
+/* End of Styling for the dashborad content */  
 
 
+   
+    /* Styling for the search input field */
+#search-input {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box;
+}
 
-/* CSS for Search Field */
-        .search-container {
-            margin: 20px 0; 
-            text-align: center; 
-        }
+/* Styling for the search result box */
+.search-result {
+    margin-top: 10px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    background-color: white; 
+    display:none;
+}
 
-        .search-container input[type="text"] {
-            padding: 10px; 
-            font-size: 16px; 
-            width: 300px; 
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
-            margin-right: 10px;        }
 
-        .search-container button {
-            padding: 10px 15px;
-            font-size: 16px; 
-            color: #fff; 
-            background-color: #007bff; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-        }
-
-        .search-container button:hover {
-            background-color: #0056b3;
-        }
-        
-        /* End of CSS for Search Field */
+      
+    /* End of Styling for the search input field */
